@@ -2,15 +2,15 @@
 
 const meta ={
     value: "Ler um livro todo mês",
-    checked: false,
-    snifa: (infor) => {
-        console.log(infor)
-    }
+    checked: false, 
 };
 
-meta.snifa(meta.value)
+const metas = [
+    meta,
+    {
+        value: "Correr 20 minutos todos os dias"
+    }
+]
 
-meta.value = "Não é mais ler um livro";
-
-meta.snifa(meta.value)
-meta.snifa(meta.checked)
+console.log(metas[0].value)
+console.log(metas[1].value)
