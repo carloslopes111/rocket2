@@ -31,14 +31,14 @@ const listarMetas = async () => {
         choices: [...metas]
     })
 
+    metas.forEach(m => {
+        m.checked = false
+    })
+
     if(respostas.length == 0){
         console.log('Nenhúma meta selecionada!');
         return
     }
-
-    metas.forEach(m => {
-        m.checked = false
-    })
 
     respostas.forEach(resposta => {
         const meta = metas.find( m => {
@@ -52,6 +52,22 @@ const listarMetas = async () => {
     
 }
 
+const metasRealizadas = async () => {
+    const realizadas = metas.filter((metaR) => {
+        return metaR.checked
+    })
+
+    if(realizadas.length == 0){
+        console.log('Ainda nenhuma meta foi realizada')
+        return
+    }
+
+    await select({
+        message: 'Metas realizadas: ',
+        choices: [...realizadas]
+    })
+
+}
 
 const start = async () => {
 
@@ -69,6 +85,10 @@ const start = async () => {
                     value: 'listar'
                 },
                 {
+                    name: 'Metas realizadas',
+                    value: 'realizadas'
+                },
+                {
                     name: 'Sair',
                     value: 'sair'
                 }
@@ -84,6 +104,9 @@ const start = async () => {
                 break
             case 'listar':
                 await listarMetas()
+                break
+            case 'realizadas': 
+                await metasRealizadas()
                 break
             case 'sair':
                 console.log("Saiu da aplicação")
