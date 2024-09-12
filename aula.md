@@ -35,8 +35,9 @@ Apresentar os dados
 
 ## Operadores:
 
-- [x] Operadores de atribuição de valores
-Operador de concatenação
+- [x] Operadores de atribuição de valores: =
+- [x] Operador de concatenação: +
+- [x] Operador de comparação: == === != !== < > <= >= 
 
 ## Estrutura de dados:
 
@@ -64,6 +65,7 @@ Uma lista que contém qualquer tipo de dados
 ## Condicionais
 
 - [x] switch
+- [x] if/else
 
 ## Módulos em Node.js
 
