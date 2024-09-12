@@ -55,3 +55,8 @@ Uma lista que contém qualquer tipo de dados
 - [x] Criar, passar argumento
 - [x] Executar
 - [x] Arrow fuction / named fuction 
+
+
+## Estrutura de repetição
+
+- [x] while
