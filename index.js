@@ -1,13 +1,25 @@
 const { select, input, checkbox } = require('@inquirer/prompts')
 
+const fs = require('fs').promises
+
 let mensagem = 'Bem vindo ao app de metas!';
 
-let meta = {
-    value: 'Beber 2l de água por dia',
-    checked: false
-} 
 
-let metas = [ meta ]
+let metas
+
+const carregarMetas = async () => {
+    try{
+        const dados = await readfile("metas.json", "utf-8")
+        metas = JSON.parse(dados)
+    }
+    catch(erro){
+        metas = []
+    }
+}
+
+const salvarMetas = async () =>{
+    await fs.writeFile("metas.json", JSON.stringify(metas, null, 2) )
+}
 
 const cadastrarMeta = async () =>{
     const meta = await input({ message: 'Digite a sua meta:' })
@@ -29,6 +41,12 @@ const cadastrarMeta = async () =>{
 }
 
 const listarMetas = async () => {
+
+    if(metas.length == 0){
+        mensagem = 'Não existem metas'
+        return
+    }
+
     const respostas = await checkbox({
         message: 'Use as setas para mudar de meta, espaço para marcar/desmarcar uma meta e o Enter para finalizar uma meta!',
         instructions: false, // Este comando serve para validar ou cancelar uma a instruções no terminal
@@ -96,6 +114,11 @@ const deletarMetas = async () => {
         return {value: meta.value, checked: false}
     })
 
+    if(metasDesmarcadas.length == 0){
+        mensagem = 'Nenhuma meta foi selecionada pra ser deletada'
+        return
+    }
+
     const itensDeletar = await checkbox({
         message: 'Selecionar itens para deletar!',
         choices: [...metasDesmarcadas]
@@ -129,9 +152,12 @@ const mostarMensagem = () => {
 
 const start = async () => {
 
+    await carregarMetas()
+
     while(true){
 
         mostarMensagem()
+        await salvarMetas()
 
         let opcao = await select({
             message: 'menu >',

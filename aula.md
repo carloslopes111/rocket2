@@ -74,6 +74,13 @@ Uma lista que contém qualquer tipo de dados
 
 - [x] importação do módulo (inquirer, commonJS)
 - [x] Biblioteca 'inquirer' para criar prompts interativos
+- [x] Fs (file system)
+
+## JSON
+
+- [x] Javascript Object Notation (.json)
+- [x] JSON.parse(): transforma de JSON para JS
+- [x] JSON.stringify(): transforma de JS para JSON
 
 ## Programação Assíncrona e Promises
 
