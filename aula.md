@@ -44,7 +44,7 @@ Apresentar os dados
 
 ### Array:
 - [x] Array é uma lista que contém vários tipos de dados
-- [x] Métodos de array: push, [find, forEach, filter]: HOf (Higher Order Functions)
+- [x] Métodos de array: push, [find, forEach, map, filter]: HOf (Higher Order Functions)
 
 Uma lista que contém qualquer tipo de dados
 
